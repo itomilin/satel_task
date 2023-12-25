@@ -15,14 +15,14 @@
 
 Предварительно находиться в корне загруженного проекта, затем выполнить команду:
 
-Если контейнер запущен, то остановить:
+Если контейнер запущен, то остановить (хотя это не обязательно, без перезапуска тоже все ок при восстановлении):
 1) cd ./docker
 2) docker-compose down
 
 Если не запущен выполняем команды:
 1) ./scripts/restore_flask_app_db.sh <path_to_backup>
-2) cd ./docker
-3) docker-compose up -d
+2) cd ./docker # на запущенном можно не делать
+3) docker-compose up -d # на запущенно можно не делать
 
 Ex. ./scripts/restore_flask_app_db.sh ./backups/backup_db_11-13-59.tar.gz
 
