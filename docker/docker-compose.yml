@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  flask-app:
+    image: flask-blog:1.0.0
+    container_name: flask-app
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./flask_app_docker
+    volumes:
+      - "./db_data:/flaskBlog/db"
+    networks:
+      - flask-net
+  
+  nginx:
+    image: nginx:1.22.1
+    container_name: nginx-lb
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./nginx/:/etc/nginx/conf.d/"
+      - "./test-task1.vizorlabs.ru:/etc/ssl/flask_certs"
+    networks:
+      - flask-net
+
+networks:
+  flask-net:
+    driver: bridge
