@@ -9,7 +9,7 @@ if [[ -z $PATH_TO_BACKUP ]]; then
 fi
 
 DB_PATH="./docker/db_data"
-if [[ ! -d $DB_PATH ]]; then
+if [[ -d $DB_PATH ]]; then
     rm -vf ./docker/db_data/*
 fi
 tar xfv $1 ./docker/db_data
